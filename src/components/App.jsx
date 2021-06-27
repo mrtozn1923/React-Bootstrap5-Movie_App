@@ -29,22 +29,29 @@ class App extends React.Component{
                 "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
                 "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
             }
-        ]
+        ],
+        searchQuery:""
     }
     
     deleteMovie=(movie)=>{
         const newMovieList=this.state.movies.filter(
             m=>m.id!==movie.id
         );
-        // this.setState({
-        //     movies:newMovieList
-        // });
-        this.setState(state=>({
+        this.setState(()=>({
             movies:newMovieList
         }));
     }
 
+    searchMovie=(e)=>{
+        this.setState({searchQuery:e.target.value});
+    }
+
     render(){
+        let filteredMovies=this.state.movies.filter(
+            (movie)=>{
+                return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLowerCase())!==-1
+            }
+        )
         return(
             <div className="container">
                 <div className="row">
@@ -52,11 +59,11 @@ class App extends React.Component{
                 </div>
                 <div className="row">
                     <div className="col-lg-12">
-                        <SearchBar />
+                        <SearchBar searchMovie={this.searchMovie}/>
                     </div>
                 </div>
                 <MovieList 
-                    movies={this.state.movies}
+                    movies={filteredMovies}
                     deleteMovie={this.deleteMovie}
                 />
             </div>
