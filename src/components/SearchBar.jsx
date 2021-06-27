@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class MovieList extends Component {
+class SearchBar extends Component {
     render() {
         return (
             <h1>Search Bar</h1>
@@ -8,4 +8,4 @@ class MovieList extends Component {
     }
 }
 
-export default MovieList;
+export default SearchBar;
