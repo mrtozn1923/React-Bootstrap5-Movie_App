@@ -36,14 +36,20 @@ class App extends React.Component{
         const newMovieList=this.state.movies.filter(
             m=>m.id!==movie.id
         );
-        this.setState({
+        // this.setState({
+        //     movies:newMovieList
+        // });
+        this.setState(state=>({
             movies:newMovieList
-        });
+        }));
     }
 
     render(){
         return(
             <div className="container">
+                <div className="row">
+                    <h1 className="text-center mt-3">REACTJS - MOVIE APP</h1>
+                </div>
                 <div className="row">
                     <div className="col-lg-12">
                         <SearchBar />
