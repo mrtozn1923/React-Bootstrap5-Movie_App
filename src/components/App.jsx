@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import axios from 'axios';
 
 class App extends React.Component{
     
@@ -10,13 +11,12 @@ class App extends React.Component{
     }
 
     async componentDidMount(){
-        const baseURL=" http://localhost:3004/movies";
-        const response=await fetch(baseURL);
-        const data=await response.json();
-        this.setState({movies:data});
+        const response=await axios.get("http://localhost:3004/movies");
+        this.setState({movies:response.data});
     }
     
-    deleteMovie=(movie)=>{
+    deleteMovie=async (movie)=>{
+        axios.delete(`http://localhost:3004/movies/${movie.id}`);
         const newMovieList=this.state.movies.filter(
             m=>m.id!==movie.id
         );
