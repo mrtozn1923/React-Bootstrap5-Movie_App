@@ -6,7 +6,11 @@ class AddMovie extends Component {
     handleFormSubmit=(e)=>{
         e.preventDefault();
         const newMovie=serialize(e.target,{hash:true});
-        this.props.onAddMovie(newMovie);
+        if(newMovie.name!=""&&newMovie.imageURL!=""&&newMovie.rating!=""&&newMovie.overview){
+            this.props.onAddMovie(newMovie);
+        }else{
+            alert("Lütfen tüm alanları doldurunuz.");
+        }
     }
 
     render() {
@@ -51,4 +55,4 @@ class AddMovie extends Component {
     }
 }
 
-export default AddMovie
+export default AddMovie;

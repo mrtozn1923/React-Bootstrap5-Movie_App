@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
+import EditMovie from './EditMovie';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,6 +14,10 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
+        this.getMovies();
+    }
+
+    async getMovies() {
         const response = await axios.get("http://localhost:3004/movies");
         this.setState({ movies: response.data });
     }
@@ -36,6 +41,12 @@ class App extends React.Component {
         this.setState(state=>({
             movies:state.movies.concat([movie])
         }))
+        this.getMovies();
+    }
+
+    editMovie=async (id,movie)=>{
+        await axios.put(`http://localhost:3004/movies/${id}`,movie);
+        this.getMovies();
     }
 
     render() {
@@ -43,7 +54,9 @@ class App extends React.Component {
             (movie) => {
                 return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLowerCase()) !== -1
             }
-        )
+        ).sort((a,b)=>{
+            return a.id<b.id?1:a.id>b.id?-1:0;
+        });
         return (
             <Router>
                 <div className="container">
@@ -70,6 +83,15 @@ class App extends React.Component {
                             <AddMovie 
                             onAddMovie={(movie)=>{this.addMovie(movie)
                                     history.push("/")
+                                 }
+                            }
+                            />
+                        )}>
+                        </Route>
+                        <Route path="/edit/:id" exact render={(props)=>(
+                            <EditMovie 
+                            {...props}
+                            onEditMovie={(id,movie)=>{this.editMovie(id,movie)
                                  }
                             }
                             />

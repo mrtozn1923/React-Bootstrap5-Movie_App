@@ -15,11 +15,18 @@
       "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
     },
     {
-      "id": 3,
       "name": "Arrow",
       "rating": 7.9,
       "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
-      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg",
+      "id": 4
+    },
+    {
+      "name": "Öldürme Arzusu",
+      "rating": "9",
+      "overview": "Başarılı bir travma cerrah olan Paul Kersey, hayatını ölüm döşeğindeki, vurulmuş, bıçaklanmış insanlarla uğraşarak geçirmektedir. Stresli işinden sıyrıldığında ise sevgi dolu bir aile babasıdır. Kızı ve eşiyle mutlu bir hayat süren adam için bu düzen bir trajedi ile değişiverir. Evine düzenlenen saldırı sonrası eşi ölmüş, kızı ise komada yaşam mücadelesi vermektedir. Hayatını tamamen değiştiren bu olaydan sonra Paul, mesleki yeteneğini de kullanarak adeta bir ölüm makinesine dönüşür. Paul ne pahasına olursa olsun intikamını almaya kararlıdır...",
+      "imageURL": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3u4nMh16xqU70suOdWmxWAfOKGt.jpg",
+      "id": 5
     }
   ]
 }
