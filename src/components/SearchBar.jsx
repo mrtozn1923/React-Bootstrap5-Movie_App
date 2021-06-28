@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class SearchBar extends Component {
 
@@ -13,10 +14,13 @@ class SearchBar extends Component {
                     <div className="col-10">
                          <input onChange={this.props.searchMovie} type="text" className="form-control " placeholder="Search a movie" />
                     </div>
-                    <div className="col-2">
-                        <button type="button" className="btn btn-primary">
+                    <div className="col-2 d-flex flex-row-reverse">
+                        <Link
+                            to="/add" 
+                            type="button" 
+                            className="btn btn-primary">
                             Add Movie
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </form>

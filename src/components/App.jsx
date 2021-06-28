@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -29,6 +29,13 @@ class App extends React.Component {
 
     searchMovie = (e) => {
         this.setState({ searchQuery: e.target.value });
+    }
+
+    addMovie=async (movie)=>{
+        await axios.post(`http://localhost:3004/movies/`,movie)
+        this.setState(state=>({
+            movies:state.movies.concat([movie])
+        }))
     }
 
     render() {
@@ -59,7 +66,15 @@ class App extends React.Component {
                             </React.Fragment>
                         )}>
                         </Route>
-                        <Route path="/add" component={AddMovie} />
+                        <Route path="/add" exact render={({history})=>(
+                            <AddMovie 
+                            onAddMovie={(movie)=>{this.addMovie(movie)
+                                    history.push("/")
+                                 }
+                            }
+                            />
+                        )}>
+                        </Route>
                     </Switch>
                 </div>
             </Router>
